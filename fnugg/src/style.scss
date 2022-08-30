@@ -1,0 +1,149 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-fnugg {
+	width: 100%;
+	max-width: 300px;
+	margin: auto;
+	transition: all 1s ease-out;
+	border: 2px solid #eee;
+	border-radius: 3px;
+	.title{
+		color: #fff;
+		font-size: 18px;
+		line-height: 22px;
+		padding: 15px;
+		background-color: #222;
+		font-weight: bold;
+	}
+	.content{ 
+		transition: all 1s ease-out;
+		position: relative;
+		&.loading{
+			&:before{
+				content:"";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: rgba(255, 255, 255, 0.2);
+				backdrop-filter: blur(5px);
+				z-index: 98;
+			}
+			&:after{ 
+				content:"";
+				position: absolute;
+				width: 64px;
+				height: 64px;
+				background: url('../img/loading.png') no-repeat center;
+				left: 50%;
+				top: 50%;
+				margin-top:-32px;
+				margin-left:-32px;
+				animation-name: spin;
+				animation-duration: 1s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear; 
+				z-index: 99;
+			}	
+		}
+		.featured_image{
+			max-height: 338px;
+			width: 100%;
+			position: relative;
+			img{
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				max-height: 338px;
+			}
+			.current_report{
+				position: absolute;
+				bottom: 0;
+				text-align: center;
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				padding: 12px 0;
+				background-color: rgba(0,0,0,0.6);
+				.condition_description{
+					color: #fff;
+					font-size: 26px;
+					line-height: 22px;
+					margin-bottom: 8px;
+				}
+				.last_updated{
+					color: #fff;
+					font-size: 16px;
+					line-height: 18px;
+				}
+			}
+		}
+		.combined{
+			display: grid;
+			grid-template-columns: 50% 50%;
+			grid-row: auto auto;
+			grid-column-gap: 20px;
+			grid-row-gap: 20px;
+			> div {
+				text-align: center;
+				padding: 0;
+				&.symbol{
+					display: flex;
+					flex-direction: column;
+					img{
+						width: 100px;
+						height: auto;
+    					margin: 15px auto 15px auto;
+					}
+					span{
+						font-size: 16px;
+						width: 100%;
+					}
+				}
+				&.temperature{
+					font-size: 70px;
+					color: #ed6762;
+					line-height: 145px;
+				}
+				&.wind{
+					display: flex;
+					flex-direction: column;
+					text-align: center;
+					padding-bottom: 30px;
+					.mps{
+						font-size: 40px;
+						margin-left: 10px;
+						>span{
+							font-size: 14px;
+						}
+					}
+					.speed{
+						font-size: 16px;
+					}
+				}
+				&.snow{
+					font-size: 16px;
+					line-height: 110px;
+					img{
+						position: relative;
+						top: 8px;
+						margin-right: 8px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
